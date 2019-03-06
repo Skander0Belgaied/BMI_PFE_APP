@@ -12,7 +12,7 @@ public class HomeController {
 	}
 	@RequestMapping("/test")
 	String show () {
-	return "settings";
+	return "adduser";
 	}
 }
 	

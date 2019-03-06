@@ -16,6 +16,11 @@ public class HomeController {
 	@Autowired
 	UtilisateurRepository U_R;
 	
+	@RequestMapping("/logout")
+	String logout() {
+		return "login";
+	}
+
 	@RequestMapping("/login")
 	String login() {
 		return "login";

@@ -14,8 +14,8 @@ import com.bmi.app.repository.UtilisateurRepository;
 @Controller
 public class TestController {
 	
-	@RequestMapping("/test")
+	@RequestMapping("/t")
 	String test() {
-		return "blank";
+		return "test";
 	}
 }

@@ -16,6 +16,6 @@ public class TestController {
 	
 	@RequestMapping("/test")
 	String test() {
-		return "adduser";
+		return "index";
 	}
 }

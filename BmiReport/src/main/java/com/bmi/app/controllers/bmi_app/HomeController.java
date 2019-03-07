@@ -47,10 +47,6 @@ public class HomeController {
 		return "work succssuffly";
 	}
 
-	@RequestMapping("/test")
-	@ResponseBody
-	List<Utilisateur> test() {
-		return U_R.findAll();
-	}
+
 
 }

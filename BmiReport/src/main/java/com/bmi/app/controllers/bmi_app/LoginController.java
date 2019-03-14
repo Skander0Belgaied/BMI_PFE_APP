@@ -15,7 +15,7 @@ public class LoginController {
 	String login() {
 		return "login";
 	}
-	
+		
 	@RequestMapping("/check")
 	String cheking() {
 		return "redirect:/";

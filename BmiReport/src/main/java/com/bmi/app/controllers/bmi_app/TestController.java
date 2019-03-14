@@ -6,8 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 	
-	@RequestMapping("/t")
+	@RequestMapping("/t	")
 	String test() {
-		return "settings";
+		return "index";
 	}
+	
 }

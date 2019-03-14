@@ -8,6 +8,6 @@ public class TestController {
 	
 	@RequestMapping("/t")
 	String test() {
-		return "cfguser";
+		return "settings";
 	}
 }

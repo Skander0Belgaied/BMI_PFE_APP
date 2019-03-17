@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LoginController {
 
-	@RequestMapping("/logout")
+	@RequestMapping("/logout-success")
 	String logout() {
 		return "login";
 	}
@@ -15,10 +15,10 @@ public class LoginController {
 	String login() {
 		return "login";
 	}
-		
 	@RequestMapping("/check")
 	String cheking() {
 		return "redirect:/";
 	}
+
 
 }

@@ -42,7 +42,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getUtilisateurPassword() {
-		return utilisateurPassword;
+		return this.utilisateurPassword;
 	}
 
 	public void setUtilisateurPassword(String utilisateurPassword) {
@@ -50,7 +50,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public String getUtilisateurEmail() {
-		return utilisateurEmail;
+		return this.utilisateurEmail;
 	}
 
 	public void setUtilisateurEmail(String utilisateurEmail) {
@@ -58,7 +58,7 @@ public class Utilisateur implements Serializable {
 	}
 
 	public Boolean getUtilisateurType() {
-		return utilisateurType;
+		return this.utilisateurType;
 	}
 
 	public void setUtilisateurType(Boolean utilisateurType) {

@@ -1,14 +1,11 @@
 package com.bmi.app.controllers.bmi_app;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.bmi.app.model.bmi_app.Utilisateur;
 import com.bmi.app.repository.UtilisateurRepository;
 
 @Controller
@@ -25,7 +22,11 @@ public class HomeController {
 	String sujet() {
 		return "sujet";
 	}
-
+	
+	@RequestMapping(path = "/cfg-account", method = RequestMethod.GET)
+	String configUsers() {
+		return "cfguser";
+	}
 	@RequestMapping(path = "/Add/Account", method = RequestMethod.GET)
 	@ResponseBody
 	String addAccount() {

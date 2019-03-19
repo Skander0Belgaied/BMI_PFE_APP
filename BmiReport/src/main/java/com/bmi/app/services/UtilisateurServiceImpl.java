@@ -17,7 +17,6 @@ public class UtilisateurServiceImpl implements UtiliasateurService {
 
 	@Override
 	public Utilisateur createUtilisateur(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
 		return utilisateurRepository.save(utilisateur);
 	}
 
@@ -25,6 +24,17 @@ public class UtilisateurServiceImpl implements UtiliasateurService {
 	public Optional<Utilisateur> getUtilisateur(long utilisateurId) {
 		// TODO Auto-generated method stub
 		return utilisateurRepository.findById(utilisateurId);
+	}
+	public List<Utilisateur> getUtilisateurByMail(String utilisateurEmail) {
+		// TODO Auto-generated method stub
+		List<Utilisateur> utilisateurs=null;
+		if(utilisateurEmail.equals("ALL")) {
+			 utilisateurs=utilisateurRepository.findAll();
+		}
+		else {
+			utilisateurs=utilisateurRepository.findLikeMailOrFirstNameOrLastName(utilisateurEmail);
+		}
+		return utilisateurs ;
 	}
 
 	@Override
@@ -35,14 +45,18 @@ public class UtilisateurServiceImpl implements UtiliasateurService {
 
 	@Override
 	public void deleteUtilisateur(Utilisateur utilisateur) {
-		// TODO Auto-generated method stub
 		utilisateurRepository.delete(utilisateur);
 	}
 
 	@Override
-	public void deleteUtilisateur(long id) {
-		// TODO Auto-generated method stub
-		utilisateurRepository.deleteById(id);
+	public boolean deleteUtilisateur(long id) {
+	Optional<Utilisateur> utiliasteurSerach=utilisateurRepository.findById(id);
+	if(utiliasteurSerach.isPresent()) {
+	utilisateurRepository.deleteById(id);
+	return true;
+	}else
+		System.out.println("pas trouvééé");
+	return false;
 	}
 
 	@Override

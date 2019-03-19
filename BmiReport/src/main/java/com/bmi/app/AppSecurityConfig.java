@@ -1,5 +1,8 @@
 package com.bmi.app;
 
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +12,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.bmi.app.services.UtilisateurDetailsService;
@@ -17,7 +19,7 @@ import com.bmi.app.services.UtilisateurDetailsService;
 
 @Configuration
 @EnableWebSecurity
-public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
+public class AppSecurityConfig extends WebSecurityConfigurerAdapter implements HttpSessionListener {
 	
 	@Autowired
 	private UtilisateurDetailsService utilisateurDetailsService;
@@ -36,7 +38,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.authorizeRequests().antMatchers("/login").permitAll()
 		.and()
 		.authorizeRequests()
-		.antMatchers("/css/**", "/js/**","/img/**","/scss/**","/vendor/**").permitAll()
+		.antMatchers("/css/**", "/js/**","/img/**","/scss/**","/vendor/**","/cfg-account/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -47,6 +49,15 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		.clearAuthentication(true)
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		.logoutSuccessUrl("/logout-success").permitAll();
+	}
+	@Override
+	public void sessionCreated(HttpSessionEvent se) {
+		  se.getSession().setMaxInactiveInterval(900);		
+	}
+
+	@Override
+	public void sessionDestroyed(HttpSessionEvent se) {
+		
 	}
 	
 
